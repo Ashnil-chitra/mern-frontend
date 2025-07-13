@@ -1,0 +1,25 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import UserPage from './pages/UserPage';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Navbar from './components/Navbar'; 
+
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen bg-white text-gray-800">
+   
+  <Navbar />
+      <Routes>
+        <Route path="/" element={<UserPage />} />
+       
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
