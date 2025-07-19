@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -11,20 +12,24 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await fetch(`${process.env.REACT_APP_BASE_URL}/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();
-      if (data.success) {
+      if (res.ok) {
         setSubmitted(true);
         setFormData({ name: "", email: "", message: "" });
-        setTimeout(() => setSubmitted(false), 4000); // Remove thank-you after 4s
+        setTimeout(() => setSubmitted(false), 4000); // thank you msg auto-hide
+      } else {
+        console.error("Server error while submitting form.");
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Network error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -68,9 +73,12 @@ function Contact() {
         />
         <button
           type="submit"
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+          disabled={loading}
+          className={`bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded ${
+            loading ? "opacity-60 cursor-not-allowed" : ""
+          }`}
         >
-          Send Message
+          {loading ? "Sending..." : "Send Message"}
         </button>
       </form>
     </div>
