@@ -62,7 +62,7 @@ function UserPage() {
     <>
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="p-10 text-center">
-        <h1 className="text-3xl font-bold text-blue-600">Welcome to MERN Site</h1>
+        <h1 className="text-3xl font-bold text-blue-600">Welcome to Ashnil React+MongoDB Site</h1>
         <p className="mt-2 text-gray-700">
           This is the homepage where you can display your user data or dashboard.
         </p>

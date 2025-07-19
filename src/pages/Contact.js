@@ -1,43 +1,80 @@
-// src/pages/ContactPage.jsx
-import React from 'react';
+import React, { useState } from "react";
 
-function ContactPage() {
+function Contact() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`${process.env.REACT_APP_BASE_URL}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setSubmitted(false), 4000); // Remove thank-you after 4s
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12 space-y-10">
-      <section className="text-center">
-        <h1 className="text-4xl font-bold text-blue-700">Contact Me</h1>
-        <p className="mt-2 text-gray-600">Feel free to reach out via email or connect on socials.</p>
-      </section>
+    <div className="max-w-xl mx-auto p-4">
+      <h2 className="text-3xl font-bold mb-4 text-center">📬 Contact Me</h2>
 
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* Contact Info */}
-        <div className="space-y-6">
-          <div>
-            <p className="font-semibold text-gray-800">📧 Email</p>
-            <p className="text-gray-600">ashnil@example.com</p>
-          </div>
-          <div>
-            <p className="font-semibold text-gray-800">🌐 LinkedIn</p>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" className="text-blue-500">linkedin.com/in/yourprofile</a>
-          </div>
-          <div>
-            <p className="font-semibold text-gray-800">💻 GitHub</p>
-            <a href="https://github.com/Ashnil-chitra" target="_blank" className="text-blue-500">github.com/Ashnil-chitra</a>
-          </div>
+      {submitted && (
+        <div className="text-green-600 font-semibold text-center mb-4 animate-bounce">
+          Thank you! Your message has been sent 💌
         </div>
+      )}
 
-        {/* Optional Contact Form */}
-        <form className="space-y-4">
-          <input type="text" placeholder="Your Name" className="w-full border rounded p-2" />
-          <input type="email" placeholder="Your Email" className="w-full border rounded p-2" />
-          <textarea placeholder="Your Message" className="w-full border rounded p-2 h-32" />
-          <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Send Message
-          </button>
-        </form>
-      </div>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          type="text"
+          name="name"
+          placeholder="Your name"
+          value={formData.name}
+          onChange={handleChange}
+          className="w-full p-2 border border-gray-300 rounded"
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full p-2 border border-gray-300 rounded"
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="Your message"
+          rows="5"
+          value={formData.message}
+          onChange={handleChange}
+          className="w-full p-2 border border-gray-300 rounded"
+          required
+        />
+        <button
+          type="submit"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+        >
+          Send Message
+        </button>
+      </form>
     </div>
   );
 }
 
-export default ContactPage;
+export default Contact;
