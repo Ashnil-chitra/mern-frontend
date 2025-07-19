@@ -59,6 +59,7 @@ function UserPage() {
   );
 
   return (
+    <>
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="p-10 text-center">
         <h1 className="text-3xl font-bold text-blue-600">Welcome to MERN Site</h1>
@@ -133,6 +134,78 @@ function UserPage() {
         </button>
       </form>
     </div>
+
+    <div className="text-white bg-gray-900 font-sans">
+      
+      {/* 🌟 Hero Section */}
+      <section className="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-indigo-800 to-purple-700 px-4">
+        <h1 className="text-5xl font-bold mb-4">Hi, I'm Ashnil Chitravanshi</h1>
+        <p className="text-xl mb-6">UI Developer | MERN Stack Enthusiast</p>
+        <a href="#projects" className="bg-white text-black px-6 py-3 rounded-md hover:bg-gray-200 transition">
+          View My Projects
+        </a>
+      </section>
+
+      {/* 👤 About Section */}
+      <section className="py-20 px-6 bg-gray-800 text-center" id="about">
+        <h2 className="text-3xl font-semibold mb-4">About Me</h2>
+        <p className="max-w-2xl mx-auto text-gray-300">
+          I'm a passionate UI Developer with experience in the MERN Stack.
+          I enjoy creating responsive web applications and continuously learning new technologies.
+        </p>
+      </section>
+
+      {/* 🧠 Tech Stack / Skills */}
+      <section className="py-20 px-6 bg-gray-900 text-center" id="skills">
+        <h2 className="text-3xl font-semibold mb-8">My Skills</h2>
+        <div className="flex flex-wrap justify-center gap-6 text-gray-300">
+          <span className="bg-gray-700 px-4 py-2 rounded-full">HTML</span>
+          <span className="bg-gray-700 px-4 py-2 rounded-full">CSS</span>
+          <span className="bg-gray-700 px-4 py-2 rounded-full">JavaScript</span>
+          <span className="bg-gray-700 px-4 py-2 rounded-full">React</span>
+          <span className="bg-gray-700 px-4 py-2 rounded-full">Node.js</span>
+          <span className="bg-gray-700 px-4 py-2 rounded-full">Express</span>
+          <span className="bg-gray-700 px-4 py-2 rounded-full">MongoDB</span>
+          <span className="bg-gray-700 px-4 py-2 rounded-full">Tailwind CSS</span>
+        </div>
+      </section>
+
+      {/* 💼 Projects Section */}
+      <section className="py-20 px-6 bg-gray-800 text-center" id="projects">
+        <h2 className="text-3xl font-semibold mb-8">Projects</h2>
+        <div className="flex flex-wrap justify-center gap-6">
+          <div className="bg-gray-700 p-6 rounded-lg w-72 shadow-md">
+            <h3 className="text-xl font-bold mb-2">MERN CRUD App</h3>
+            <p className="text-gray-300 mb-4">A full MERN app to add, edit, delete users with a styled UI.</p>
+            <a href="https://mern-frontend-alpha-dun.vercel.app/" target="_blank" rel="noreferrer" className="text-blue-400 underline">
+              Live Demo
+            </a>
+            <br />
+            <a href="https://github.com/Ashnil-chitra/mern-frontend" target="_blank" rel="noreferrer" className="text-blue-400 underline">
+              GitHub Code
+            </a>
+          </div>
+          {/* Add more project cards here */}
+        </div>
+      </section>
+
+      {/* 📞 Contact Section */}
+      <section className="py-20 px-6 bg-gray-900 text-center" id="contact">
+        <h2 className="text-3xl font-semibold mb-8">Contact Me</h2>
+        <p className="text-gray-300 mb-4">Email: ashnil@example.com</p>
+        <div className="flex justify-center gap-6 text-gray-300">
+          <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-blue-400">LinkedIn</a>
+          <a href="https://github.com/Ashnil-chitra" target="_blank" rel="noreferrer" className="hover:text-blue-400">GitHub</a>
+          <a href="mailto:ashnil@example.com" className="hover:text-blue-400">Mail</a>
+        </div>
+      </section>
+
+      {/* ⚓ Footer */}
+      <footer className="py-6 bg-gray-800 text-center text-gray-400">
+        <p>© 2025 Ashnil Chitravanshi | All rights reserved</p>
+      </footer>
+    </div>
+    </>
   );
 }
 
