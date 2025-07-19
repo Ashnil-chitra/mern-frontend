@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import {
+  getUsers,
+  addUser,
+  updateUser,
+  deleteUser,
+} from '../api/api'; // adjust path if needed
 
 function UserPage() {
   const [users, setUsers] = useState([]);
@@ -18,8 +23,8 @@ function UserPage() {
   }, [editUser]);
 
   const fetchUsers = async () => {
-    const res = await axios.get('http://localhost:5000/api/users');
-    setUsers(res.data);
+    const data = await getUsers();
+    setUsers(data);
   };
 
   const handleChange = (e) => {
@@ -32,10 +37,10 @@ function UserPage() {
     if (!formData.name || !formData.email) return alert('Please fill all fields');
 
     if (editUser) {
-      await axios.put(`http://localhost:5000/api/users/${editUser._id}`, formData);
+      await updateUser(editUser._id, formData);
       setEditUser(null);
     } else {
-      await axios.post('http://localhost:5000/api/users', formData);
+      await addUser(formData);
     }
 
     setFormData({ name: '', email: '' });
@@ -44,7 +49,7 @@ function UserPage() {
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this user?')) {
-      await axios.delete(`http://localhost:5000/api/users/${id}`);
+      await deleteUser(id);
       fetchUsers();
     }
   };
@@ -55,10 +60,13 @@ function UserPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="p-10 text-center">
-      <h1 className="text-3xl font-bold text-blue-600">Welcome to MERN Site</h1>
-      <p className="mt-2 text-gray-700">This is the homepage where you can display your user data or dashboard.</p>
-    </div>
+      <div className="p-10 text-center">
+        <h1 className="text-3xl font-bold text-blue-600">Welcome to MERN Site</h1>
+        <p className="mt-2 text-gray-700">
+          This is the homepage where you can display your user data or dashboard.
+        </p>
+      </div>
+
       <h1 className="text-3xl font-bold mb-6 text-gray-800">Users from MongoDB</h1>
 
       <input
