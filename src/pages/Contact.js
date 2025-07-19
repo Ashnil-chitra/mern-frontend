@@ -1,52 +1,43 @@
-import React, { useState } from 'react';
+// src/pages/ContactPage.jsx
+import React from 'react';
 
-function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-
-  const handleChange = e => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    alert('Message sent successfully!');
-    setFormData({ name: '', email: '', message: '' });
-  };
-
+function ContactPage() {
   return (
-    <div className="p-10 max-w-xl mx-auto">
-      <h2 className="text-3xl font-semibold text-blue-600 mb-4">Contact Us</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          name="name"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full p-3 border rounded"
-          required
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Your Email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full p-3 border rounded"
-          required
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          value={formData.message}
-          onChange={handleChange}
-          rows={4}
-          className="w-full p-3 border rounded"
-          required
-        />
-        <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Send</button>
-      </form>
+    <div className="max-w-4xl mx-auto px-4 py-12 space-y-10">
+      <section className="text-center">
+        <h1 className="text-4xl font-bold text-blue-700">Contact Me</h1>
+        <p className="mt-2 text-gray-600">Feel free to reach out via email or connect on socials.</p>
+      </section>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Contact Info */}
+        <div className="space-y-6">
+          <div>
+            <p className="font-semibold text-gray-800">📧 Email</p>
+            <p className="text-gray-600">ashnil@example.com</p>
+          </div>
+          <div>
+            <p className="font-semibold text-gray-800">🌐 LinkedIn</p>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" className="text-blue-500">linkedin.com/in/yourprofile</a>
+          </div>
+          <div>
+            <p className="font-semibold text-gray-800">💻 GitHub</p>
+            <a href="https://github.com/Ashnil-chitra" target="_blank" className="text-blue-500">github.com/Ashnil-chitra</a>
+          </div>
+        </div>
+
+        {/* Optional Contact Form */}
+        <form className="space-y-4">
+          <input type="text" placeholder="Your Name" className="w-full border rounded p-2" />
+          <input type="email" placeholder="Your Email" className="w-full border rounded p-2" />
+          <textarea placeholder="Your Message" className="w-full border rounded p-2 h-32" />
+          <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Send Message
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
 
-export default Contact;
+export default ContactPage;
