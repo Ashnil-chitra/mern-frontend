@@ -4,6 +4,8 @@ import UserPage from './pages/UserPage';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Navbar from './components/Navbar'; 
+import Dashboard from './pages/Dashboard';
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
        
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+         <Route path="/dashboard" element={<Contact />} />
       </Routes>
       </div>
     </Router>
