@@ -11,6 +11,7 @@ function Navbar() {
           <Link to="/about" className="hover:text-gray-200">About</Link>
           <Link to="/contact" className="hover:text-gray-200">Contact</Link>
           <Link to="/dashboard" className="hover:text-blue-500">Dashboard</Link>
+             <Link to="/admin/contacts" className="hover:text-blue-500">AdminContacts</Link>
         </div>
       </div>
     </nav>

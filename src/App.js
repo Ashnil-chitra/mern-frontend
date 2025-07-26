@@ -5,6 +5,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Navbar from './components/Navbar'; 
 import Dashboard from './pages/Dashboard';
+import AdminContacts from './pages/admin/AdminContacts';
+
 
 
 function App() {
@@ -18,7 +20,9 @@ function App() {
        
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-         <Route path="/dashboard" element={<Dashboard />} />
+         <Route path="/dashboard" element={<Dashboard />} /> 
+                 <Route path="/admin/contacts" element={<AdminContacts />} />
+
       </Routes>
       </div>
     </Router>
