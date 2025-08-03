@@ -28,10 +28,7 @@ function App() {
          <Route path="/dashboard" element={<Dashboard />} /> 
                  <Route path="/admin/contacts" element={<AdminContacts />} />
                           <Route path="/feedback" element={<Feedback />} />
-                      
-
-
-      </Routes>
+                      </Routes>
       </div>
     </Router>
   );
