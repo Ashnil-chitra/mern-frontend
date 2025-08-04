@@ -17,10 +17,10 @@ function Contact() {
     setLoading(true);
 
       // ✅ Add this line here
-  console.log("BASE_URL", process.env.REACT_APP_BASE_URL);
+  console.log("BASE_URL", BASE_URL);
 
     try {
-      const res = await fetch(`${process.env.REACT_APP_BASE_URL}/contact`, {
+      const res = await fetch(`${BASE_URL}/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
