@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+// ✅ Add this line just below import
+const BASE_URL = process.env.REACT_APP_BASE_URL || "https://mern-backend-xl9k.onrender.com/api";
 
 function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -13,7 +15,7 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
+
       // ✅ Add this line here
   console.log("BASE_URL", process.env.REACT_APP_BASE_URL);
 
