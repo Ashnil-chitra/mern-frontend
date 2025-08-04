@@ -13,6 +13,10 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    
+      // ✅ Add this line here
+  console.log("BASE_URL", process.env.REACT_APP_BASE_URL);
+
     try {
       const res = await fetch(`${process.env.REACT_APP_BASE_URL}/contact`, {
         method: "POST",
