@@ -1,6 +1,6 @@
 // src/api/api.js
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = process.env.REACT_APP_BASE_URL || "https://mern-backend-xl9k.onrender.com/api";
 
 // ✅ Get all users
 export const getUsers = async () => {
